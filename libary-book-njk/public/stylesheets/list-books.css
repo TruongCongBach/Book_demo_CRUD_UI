@@ -1,0 +1,16 @@
+body {
+    margin: 20px;
+    padding: 20px;
+}
+
+a {
+    text-decoration: none;
+}
+
+form {
+    float: left;
+}
+
+ol{
+    float: left;
+}

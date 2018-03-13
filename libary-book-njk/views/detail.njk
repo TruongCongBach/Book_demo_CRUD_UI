@@ -1,0 +1,23 @@
+<html>
+<head>
+    <title>Detail Book</title>
+    <a href="/">Home</a>
+</head>
+<body>
+    <h1>
+        Title:
+        {{book.getTitle()}}
+    </h1>
+    <small>
+        author:
+        {{book.getAuthor()}}
+    </small>
+    <br>
+    <small>
+        Publisher:
+        {{book.getPublisher().getName()}}
+    </small>
+    <h2><a href="/edit/{{book.getId()}}">edit</a></h2>
+    <h2><a href="/delete/{{book.getId()}}">delete</a></h2>
+</body>
+</html>

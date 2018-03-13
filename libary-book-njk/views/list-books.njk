@@ -1,0 +1,31 @@
+<html>
+<head>
+    <title>{{title}}</title>
+    <a href="/">Home</a>
+    <a href="/add">add</a>
+    <link rel='stylesheet' type='text/css'  href='stylesheets/list-books.css'>
+</head>
+<body>
+    <form method="get" action="/search-basic">
+        <div>
+            <label for="keyword"></label>
+            <input id="keyword" type="text" name="keyword">
+        </div>
+        <br>
+        <div>
+            <input type="submit" value="Search">
+        </div>
+    </form>
+    <ol>
+        {% for book in books %}
+        <li>
+            <a href="/book/{{book.getId()}}">
+                Title:  {{book.getTitle()}}
+            </a>
+            <br>
+            Publisher: {{book.getPublisher().getName()}}
+        </li>
+        {% endfor %}
+    </ol>
+</body>
+</html>

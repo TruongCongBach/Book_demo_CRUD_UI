@@ -1,0 +1,45 @@
+<html>
+<head>
+    <title>{{title}}</title>
+    <a href="/">Home</a>
+    <link rel='stylesheet' type='text/css'  href='stylesheets/list-books.css'>
+</head>
+<body>
+<br>
+    <form action="/search-advance" method="get">
+        <div>
+            <label  for="title">Title</label><br>
+            <input  id="title" name="title">
+        </div>
+        <div>
+            <label for="author">Author</label><br>
+            <input id="author" name="author">
+        </div>
+        <div>
+            <label for="publisher">Publisher</label><br>
+            <input id="publisher" name="publisher">
+        </div>
+        <div>
+            <label for="price">Price</label><br>
+            <input id="price" name="price">
+        </div>
+        <br>
+        <div>
+            <input type="submit" value="Search">
+        </div>
+    </form>
+    <ol>
+        {% for book in books %}
+        <li>
+            Title:{{book.getTitle()}}
+            <br>
+            author: {{book.getAuthor()}}
+            <br>
+            Publisher:{{book.getPublisher().getName()}}
+            <br>
+            price: {{book.getPrice()}}
+        </li>
+        {% endfor %}
+    </ol>
+</body>
+</html>

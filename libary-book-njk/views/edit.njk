@@ -1,0 +1,36 @@
+<html>
+<head>
+    <title>Save Book</title>
+    <a href="/">Home</a>
+</head>
+<body>
+    <form action="/edit/book/{{book.getId()}}" method="post">
+        <div>
+            <label for="title">Title</label>
+            <input id="title" value="{{book.getTitle()}}" type="text" name="title">
+        </div>
+        <div>
+            <label for="author">Author</label>
+            <input id="author" value="{{book.getAuthor()}}" type="text" name="author">
+        </div>
+        <div>
+            <label for="publisher">Publisher</label>
+            <select id="publisher" name="publisher_id">
+                <option value="{{book.getPublisher().getId()}}">
+                    {{book.getPublisher().getName()}}
+                </option>
+            </select>
+        </div>
+
+        <div>
+            <label for="price">Price</label>
+            <input id="price" value="{{book.getPrice()}}" type="number" name="price">
+        </div>
+        <div>
+            <br>
+            <input type="submit" value="Save">
+            <input type="submit" value="Cancel">
+        </div>
+    </form>
+</body>
+</html>
