@@ -2,7 +2,7 @@ const connection = require('../../database/connection');
 const Publisher = require('../../src/publisher/publisher');
 
 module.exports = function (publisherId) {
-   return connection.select()
+    return connection.select()
         .from('publishers')
         .where({id : publisherId})
         .then(results => {

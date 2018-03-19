@@ -18,11 +18,9 @@ function makeCondition(request) {
         );
     } else if (request.path.toString().startsWith('/search-basic')){
         return new KeywordSearchCondition(request.query.keyword);
-    } else if (request.path === '/'){
+    } else if (request.path === '/list' || request.path === '/new'){
         return new UndeletedSearchCondition();
-    } else if (request.path.toString().startsWith('/book/')) {
-        return new IdSearchCondition(request.params.id);
-    } else if (request.path.toString().startsWith('/edit/')) {
+    } else if (request.path.toString().startsWith('/detail/')) {
         return new IdSearchCondition(request.params.id);
     }
 }

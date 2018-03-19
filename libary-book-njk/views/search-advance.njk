@@ -3,10 +3,12 @@
     <title>{{title}}</title>
     <a href="/">Home</a>
     <link rel='stylesheet' type='text/css'  href='stylesheets/list-books.css'>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
 </head>
 <body>
 <br>
-    <form action="/search-advance" method="get">
+    <form id="searchAdvance" action="/search-advance" method="get">
         <div>
             <label  for="title">Title</label><br>
             <input  id="title" name="title">
@@ -28,6 +30,9 @@
             <input type="submit" value="Search">
         </div>
     </form>
+
+
+<div id="texts"></div>
     <ol>
         {% for book in books %}
         <li>

@@ -5,6 +5,7 @@ class PublisherFactory {
         let publisher = new Publisher(publisherRaw.name);
         publisher.setAddress(publisherRaw.address);
         publisher.setPhone(publisherRaw.phone);
+        publisher.setId(publisherRaw.id);
         return publisher;
     }
 }

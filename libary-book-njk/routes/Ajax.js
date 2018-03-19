@@ -5,9 +5,16 @@ const check = require('../http/middlerware/index');
 
 let bookController = new BookController();
 
-router.get('/', check.searchCondition, bookController.search);
+router.get('/',function (req, res, next) {
+    res.render('home.html');
+});
 
-router.get('/book/:id', check.searchCondition, bookController.search);
+router.get('/list', check.searchCondition, bookController.search);
+
+//router.get('/book/:id', check.searchCondition, bookController.search);
+router.get('/detail/:id', check.searchCondition, bookController.detail);
+
+router.get('/new', check.searchCondition, bookController.bookPublisher);
 
 router.post('/book', check.bookRequest, bookController.createBook);
 

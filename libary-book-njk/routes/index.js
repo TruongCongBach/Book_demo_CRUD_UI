@@ -21,6 +21,7 @@ router.post('/edit/book/:id', check.bookRequest, bookController.editBook);
 
 router.get('/delete/:id', bookController.deleteBook);
 
+//router.get('/search-advance', check.searchCondition, bookController.searchAdvance);
 router.get('/search-advance', check.searchCondition, bookController.searchAdvance);
 
 router.get('/search-basic', check.searchCondition, bookController.searchAdvance);

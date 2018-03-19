@@ -3,7 +3,6 @@ const supplierPublisher = require('../../http/middlerware/supplier-publisher');
 const Publisher = require('../publisher/publisher');
 class BookFactoryReq {
 
-
     /**
      *
      * @param bookRaw

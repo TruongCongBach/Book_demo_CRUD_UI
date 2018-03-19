@@ -8,19 +8,10 @@ class SurfersApi {
 
     add(request, response) {
         connection.distinct('name', 'id').select().from('publishers')
-        .then(publishers => {
-            response.render('add.njk', {
-                publishers : publishers
-            });
-        })
-    }
-
-    edit(request, response) {
-        connection.distinct('name', 'id').select().from('publishers')
             .then(publishers => {
-                response.render('edit.njk', {
-                    publishers : publishers
-                })
+                response.render('add.njk', {
+                    publishers: publishers
+                });
             })
     }
 

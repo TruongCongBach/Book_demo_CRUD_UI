@@ -4,6 +4,7 @@
     <a href="/">Home</a>
 </head>
 <body>
+<br>
     <form action="/edit/book/{{book.getId()}}" method="post">
         <div>
             <label for="title">Title</label>
@@ -14,11 +15,18 @@
             <input id="author" value="{{book.getAuthor()}}" type="text" name="author">
         </div>
         <div>
+
             <label for="publisher">Publisher</label>
             <select id="publisher" name="publisher_id">
                 <option value="{{book.getPublisher().getId()}}">
                     {{book.getPublisher().getName()}}
                 </option>
+
+                {% for publisher in publishers %}
+                <option value="{{publisher.getId()}}">
+                    {{publisher.getName()}}
+                </option>
+                {% endfor %}
             </select>
         </div>
 
