@@ -18,7 +18,7 @@ function makeCondition(request) {
         );
     } else if (request.path.toString().startsWith('/api/books')){
         return new KeywordSearchCondition(request.query.keyword);
-    } else if (request.path === '/list' || request.path === '/new'){
+    } else if (request.path === '/list' || request.path === '/book/new'){
         return new UndeletedSearchCondition();
     } else if (request.path.toString().startsWith('/detail/') || request.path.toString().startsWith('/edit/')) {
         return new IdSearchCondition(request.params.id);

@@ -8,17 +8,26 @@ let bookController = new BookController();
 router.get('/',function (req, res, next) {
     res.render('home.html');
 });
-
+//show home
 router.get('/list', check.searchCondition, bookController.search);
 
-//router.get('/book/:id', check.searchCondition, bookController.search);
-router.get('/detail/:id', check.searchCondition, bookController.detail);
+//add render views add book publisher
+router.get('/book/new', check.searchCondition, bookController.Publisher);
 
+router.get('/publisher', check.searchCondition, bookController.PublisherAll);
+
+//edit book publishers
 router.get('/edit/:id', check.searchCondition, bookController.bookPublisher);
 
-router.get('/new', check.searchCondition, bookController.bookPublisher);
-
 router.post('/book', check.bookRequest, bookController.createBook);
+
+//edit book post
+router.post('/book/:id', check.bookRequest, bookController.editBook);
+
+//show book
+router.get('/detail/:id', check.searchCondition, bookController.detail);
+
+
 
 router.put('/book/:id', check.bookRequest, bookController.editBook);
 

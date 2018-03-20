@@ -6,27 +6,34 @@
         <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-
-        <script type="text/javascript" src="/../javascripts/script.js"></script>
+        <script type="text/javascript" src="/javascripts/home.js"></script>
     </head>
     <body>
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-4 col-md-offset-4">
-                    <h1>Home Books</h1>
-                    <label for="inputKeyword"></label>
+                    <h1> <a href="/"><i class="glyphicon glyphicon-home"></i></a> Home Book</h1>
+                    <label for="input-keyword"></label>
                     <div class="row">
-                        <div class="col-md-10">
-                            <input type="text" class="form-control" id="inputKeyword" placeholder="Key Word">
+                        <div class="col-md-8">
+                            <input type="text" class="form-control" id="input-keyword" placeholder="Key Word">
                         </div>
                         <div class="col-md-2">
-                            <button class="btn btn-success btn-block">
+                            <button id="btn-search" class="btn btn-success btn-block">
                                 <i class="glyphicon glyphicon-search"></i>
+                            </button>
+                        </div>
+                        <div class="col-md-2">
+                            <button id="create-book" class="btn btn-success btn-block">
+                                <i class="glyphicon glyphicon-plus"></i>
                             </button>
                         </div>
                     </div>
                     <hr>
-                    <ul class="list-group" id="viewBooks"></ul>
+                    <div id="search-advance">
+                    <!-- condition search advance-->
+                    </div>
+                    <ul class="list-group" id="view-books"></ul>
                     <div id="spinner" class="hidden text-center">
                         <i class="fa fa-spinner fa-spin fa-2x"></i>
                     </div>
@@ -34,8 +41,25 @@
             </div>
         </div>
     </body>
-    <script id="bookTemplate" type="text/html">
-        <li class="list-group-item"><a href="/books/:id:">:bookName:</a></li>
+    <script id="book-template" type="text/html">
+        <li class="list-group-item"><a id="a" href="/detail/:id:">:bookName:</a>
+                -- Author: :author:
+        </li>
+    </script>
+    <script id="search-template" type="text/html">
+        <label for="ipt-title">Title:</label>
+        <input class="form-control" id="ipt-title" name="title">
+        <label for="ipt-author">author:</label>
+        <input class="form-control" id="ipt-author" name="author">
+        <label for="select-publisher">Publisher</label>
+        <select id="select-publisher" class="form-control">
 
+        </select>
+        <hr>
+    </script>
+    <script id="option-template" type="text/html">
+        <option>
+            :publisher-name:
+        </option>
     </script>
 </html>

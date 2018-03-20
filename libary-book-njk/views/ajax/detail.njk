@@ -1,0 +1,36 @@
+<html>
+    <head>
+        <title>Detail Book</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    </head>
+    <body>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-4 col-md-offset-4">
+                <h1> <a href="/"><i class="glyphicon glyphicon-home"></i></a> Home Book</h1>
+                <h3>
+                    Title:
+                    {{book.getTitle()}}
+                </h3>
+                <p>
+                    author:
+                    {{book.getAuthor()}}
+                </p>
+                <small>
+                    Publisher:
+                    {{book.getPublisher().getName()}}
+                </small>
+                <br>
+                <small>
+                    price:
+                    {{book.getPrice()}}
+                </small>
+                <hr>
+                <p><a class="btn btn-primary btn-lg" href="/edit/{{book.getId()}}" role="button">Edit</a>
+                <a class="btn btn-primary btn-lg" href="/edit/{{book.getId()}}" role="button">Delete</a></p>
+            </div>
+        </div>
+    </div>
+    </body>
+</html>

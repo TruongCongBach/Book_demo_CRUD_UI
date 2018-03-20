@@ -1,0 +1,45 @@
+<html>
+    <head>
+        <title>{{title}}</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    </head>
+    <body>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-4 col-md-offset-4">
+                    <h1> <a href="/"><i class="glyphicon glyphicon-home"></i></a> Create Book</h1>
+                    <form action="/book" method="post">
+                        <div class="form-group">
+                            <label for="title">Title</label><br>
+                            <input class="form-control" id="title" type="text" name="title">
+                        </div>
+                        <div class="form-group">
+                            <label for="author">Author</label><br>
+                            <input class="form-control" id="author"  type="text" name="author">
+                        </div>
+                        <div class="form-group">
+                            <label for="publisher">Publisher</label><br>
+                            <select class="form-control"  id="publisher" name="publisher_id">
+                                {% for publisher in publishers %}
+                                <option value="{{publisher.id}}">
+                                    {{publisher.name}}
+                                </option>
+                                {% endfor %}
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="price">Price</label><br>
+                            <input class="form-control" id="price" type="number" name="price">
+                        </div>
+                        <div class="form-group">
+                            <br>
+                            <input type="submit" class="btn btn-success" value="Save">
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
