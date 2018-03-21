@@ -27,11 +27,13 @@ router.post('/book/:id', check.bookRequest, bookController.editBook);
 //show book
 router.get('/detail/:id', check.searchCondition, bookController.detail);
 
+//delete soft
+router.get('/delete/:id', bookController.deleteBook);
 
+router.delete('/delete/:id', bookController.deleteBook);
 
 router.put('/book/:id', check.bookRequest, bookController.editBook);
 
-router.delete('/delete/:id', bookController.deleteBook);
 
 router.get('/search-advance', check.searchCondition, bookController.search);
 

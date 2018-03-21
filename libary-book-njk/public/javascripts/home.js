@@ -1,7 +1,10 @@
 $(document).ready(function () {
-    let $createBook = $('#create-book');
-    let $inputKeyword = $('#input-keyword');
-    let $searchAdvance = $('#search-advance');
+    var $createBook = $('#create-book');
+    var $inputKeyword = $('#input-keyword');
+    var $searchAdvance = $('#search-advance');
+    var $btnSearch = $('#btn-search');
+    var $iptTitle = $('#ipt-title');
+
 
     $.ajax({
         url: '/list',
@@ -19,7 +22,7 @@ $(document).ready(function () {
         window.location.href = '/book/new';
     });
 
-    $('#btn-search').click(function () {
+    $btnSearch.click(function () {
         $.ajax({
             url: '/publisher'
         }).then(function (publishers) {
@@ -29,15 +32,8 @@ $(document).ready(function () {
     });
 
 
-    $(document).on('change', '#ipt-title', function () {
+    $(document).on('change', '#from-search', function () {
         keyWord();
-        $(document).on('change', '#ipt-author',function () {
-            keyWord();
-            $(document).on('select', '#option-template',function () {
-                keyWord();
-
-            })
-        })
     });
 
     /**
@@ -75,7 +71,6 @@ $(document).ready(function () {
            $('#select-publisher').html(strHTML);
        })
     }
-
 
     /**
      *
