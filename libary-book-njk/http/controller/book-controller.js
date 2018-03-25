@@ -1,16 +1,13 @@
 class BookControllerRender {
 
-
-    createBook(request, response, next) {
+    createBook(request, response) {
         let repo = request.app.get('books.repo');
         repo.add(request.book).then(() => {
             response.redirect('/')
-        }).catch(function (err) {
-            next(err);
         });
     }
 
-    deleteBook(request, response, next) {
+    deleteBook(request, response) {
         let repo = request.app.get('books.repo');
         repo.remove(request.params.id).then(function () {
             response.redirect('/');
@@ -18,24 +15,22 @@ class BookControllerRender {
     }
 
     editBook(request, response) {
-
         let repo = request.app.get('books.repo');
         repo.edit(request.book).then(() => {
             response.redirect('/');
         });
     }
 
-    search(request, response, next) {
+    search(request, response) {
         request.app.get('book.searcher').search(request.condition)
             .then((books) =>
                 response.render('list-books.njk', {
                     books: books
                 })
             )
-            .catch(next)
     }
 
-    detail(request, response, next) {
+    detail(request, response) {
         request.app.get('book.searcher').search(request.condition)
             .then((book) => {
                 if (!book.length) {
@@ -45,36 +40,29 @@ class BookControllerRender {
                     book: book[0]
                 });
             })
-            .catch(next)
     }
 
-    searchEdit(request, response, next) {
+    searchEdit(request, response) {
         let book = request.app.get('book.searcher').search(request.condition);
         let publisher = request.app.get('publisher.provider').providerAll();
         Promise.all([book, publisher])
             .then(bookEdit => {
-                response.render('edit.njk', {
-                    book: bookEdit[0][0],
-                    publishers: bookEdit[1]
-                })
+                    response.render('edit.njk', {
+                        book: bookEdit[0][0],
+                        publishers: bookEdit[1]
+                    })
                 }
             )
-            .catch(next)
-
-
     }
 
-    searchAdvance(request, response, next) {
+    searchAdvance(request, response) {
         request.app.get('book.searcher').search(request.condition)
             .then((books) =>
                 response.render('search-advance.njk', {
                     books: books
                 })
             )
-            .catch(next)
     }
-
-
 }
 
 module.exports = BookControllerRender;

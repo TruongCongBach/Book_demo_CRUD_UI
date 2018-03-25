@@ -1,6 +1,7 @@
 const Book = require('./book');
-const supplierPublisher = require('../../http/middlerware/supplier-publisher');
-const Publisher = require('../publisher/publisher');
+const SupplierPublisher = require('../../http/middlerware/supplier-publisher');
+
+
 class BookFactoryReq {
 
     /**
@@ -9,8 +10,10 @@ class BookFactoryReq {
      * @return {Book} book
      */
     makeFromRequest(bookRaw) {
+       let supplierPublisher = new SupplierPublisher();
         let book = new Book(bookRaw.title, bookRaw.author);
         book.setPrice(bookRaw.price);
+<<<<<<< HEAD
         return supplierPublisher(bookRaw.publisher_id)
             .then(results => {
                 let publisher = new Publisher(results.name);
@@ -27,7 +30,16 @@ class BookFactoryReq {
                     book.setId(bookRaw.id);
                     return book;
                 }
+=======
+        return supplierPublisher.selectPublisher(bookRaw.publisher_id)
+            .then((publisher)=>{
+               book.setPublisher(publisher);
+                return book;
+>>>>>>> dev
             });
+
+
+
     }
 }
 

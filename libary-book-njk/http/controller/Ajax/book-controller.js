@@ -3,7 +3,7 @@ class BookController {
     createBook(request, response, next) {
         let repo = request.app.get('books.repo');
         repo.add(request.book).then(() => {
-            response.status(201).send({message: "Success!"});
+            response.redirect('/');
             next();
         }).catch(next);
     }
@@ -11,9 +11,22 @@ class BookController {
     deleteBook(request, response, next) {
         let repo = request.app.get('books.repo');
         repo.remove(request.params.id).then(function () {
-            response.status(200).json({message: 'Success'});
+            response.redirect('/');
             next();
         });
+    }
+
+    Publisher(request, response, next) {
+        let book = request.app.get('book.searcher').search(request.condition);
+        let publisher = request.app.get('publisher.provider').providerAll();
+        Promise.all([book, publisher])
+            .then(bookEdit => {
+                response.render('create.njk', {
+                    book: bookEdit[0][0],
+                    publishers: bookEdit[1]
+                });
+            })
+            .catch(next)
     }
 
     bookPublisher(request, response, next) {
@@ -21,20 +34,18 @@ class BookController {
         let publisher = request.app.get('publisher.provider').providerAll();
         Promise.all([book, publisher])
             .then(bookEdit => {
-                response.send({
+                response.render('edit.njk', {
                         book: bookEdit[0][0],
                         publishers: bookEdit[1]
                 });
             })
             .catch(next)
-
-
     }
 
     search(request, response, next) {
         request.app.get('book.searcher').search(request.condition)
             .then((results) => {
-                response.status(200).send(results.map(result => result.toJson()));
+                response.json(results.map(result => result.toJson()));
                 next();
             })
             .catch(next)
@@ -43,9 +54,9 @@ class BookController {
     detail(request, response, next) {
         request.app.get('book.searcher').search(request.condition)
             .then(book => {
-
-                response.status(200).send(book.map(book => book.toJson()));
-
+                response.render('detail.njk', {
+                    book: book[0]
+                })
             })
             .catch(next)
     }
@@ -53,7 +64,7 @@ class BookController {
     editBook(request, response, next) {
         let repo = request.app.get('books.repo');
         repo.edit(request.book).then(function () {
-            response.status(200).json({message: 'Success'});
+            response.redirect('/detail/'+request.book.id);
             next();
         });
     }

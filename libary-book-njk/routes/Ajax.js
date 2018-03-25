@@ -5,25 +5,18 @@ const check = require('../http/middlerware/index');
 
 let bookController = new BookController();
 
-router.get('/',function (req, res, next) {
+router.get('/',function (req, res) {
     res.render('home.html');
 });
 
 router.get('/list', check.searchCondition, bookController.search);
-
-//router.get('/book/:id', check.searchCondition, bookController.search);
-router.get('/detail/:id', check.searchCondition, bookController.detail);
-
-router.get('/new', check.searchCondition, bookController.bookPublisher);
-
-router.post('/book', check.bookRequest, bookController.createBook);
-
-router.put('/book/:id', check.bookRequest, bookController.editBook);
-
-router.delete('/delete/:id', bookController.deleteBook);
-
 router.get('/search-advance', check.searchCondition, bookController.search);
-
-router.get('/search-basic', check.searchCondition, bookController.search);
+router.get('/detail/:id', check.searchCondition, bookController.detail);
+router.post('/book', check.bookRequest, bookController.createBook);
+router.get('/edit/:id', check.searchCondition, bookController.bookPublisher);
+router.get('/api/books', check.searchCondition, bookController.search);
+router.get('/delete/:id', bookController.deleteBook);
+router.get('/book/new', check.searchCondition, bookController.Publisher);
+router.post('/book/:id', check.bookRequest, bookController.editBook);
 
 module.exports = router;
