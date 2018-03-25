@@ -1,22 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <meta charset="UTF-8">
-        <title>Library Books</title>
         <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-        <script type="text/javascript" src="/javascripts/home.js"></script>
+        <meta charset="UTF-8">
+        <title>{%block title %}Library Books{% endblock %} </title>
+		<div class="col-md-4 col-md-offset-4">
+			<h1> <a href="/"><i class="glyphicon glyphicon-home"></i></a>{% block a%} Home Book {% endblock%}</h1>
+		</div>
     </head>
-    <body>
+    {% block content %}
+	<body>
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-4 col-md-offset-4">
-                    <h1> <a href="/"><i class="glyphicon glyphicon-home"></i></a> Home Book</h1>
                     <label for="input-keyword"></label>
                     <div class="row">
                         <div class="col-md-8">
-                            <input type="text" class="form-control" id="input-keyword" placeholder="Key Word">
+                            <input type="text" class="form-control" id="input-keyword" placeholder="Keyword">
                         </div>
                         <div class="col-md-2">
                             <button id="btn-search" class="btn btn-success btn-block">
@@ -33,15 +33,16 @@
                     <div id="search-advance">
                     <!-- condition search advance-->
                     </div>
-                    <ul class="list-group" id="view-books"></ul>
-                    <div id="spinner" class="hidden text-center">
-                        <i class="fa fa-spinner fa-spin fa-2x"></i>
-                    </div>
+                    <ul class="list-group" id="view-books">
+                    </ul>
+                    <button class="btn btn-success btn-previous" id="btn-prev"><i class="glyphicon glyphicon-backward"></i> Previous</button>
+                    <button class="btn btn-success btn-next" id="btn-next"><i class="glyphicon glyphicon-forward"></i> Next</button>
                 </div>
             </div>
         </div>
     </body>
-    <script id="book-template" type="text/html">
+    {% endblock %}
+	<script id="book-template" type="text/html">
         <li class="list-group-item"><a id="a" href="/detail/:id:">:bookName:</a>
                 -- Author: :author:
         </li>
@@ -52,16 +53,11 @@
             <input class="form-control" id="ipt-title" name="title">
             <label for="ipt-author">author:</label>
             <input class="form-control" id="ipt-author" name="author">
-            <label for="select-publisher">Publisher</label>
-            <select id="select-publisher" class="form-control">
-                <!--list publisher-->
-            </select>
+            <label for="ipt-publisher">Publisher</label>
+            <input class="form-control" id="ipt-publisher" name="publisher">
         </form>
         <hr>
     </script>
-    <script id="option-template" type="text/html">
-        <option>
-            :publisher-name:
-        </option>
-    </script>
+	<script type="text/javascript" src="/javascripts/home.js"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 </html>

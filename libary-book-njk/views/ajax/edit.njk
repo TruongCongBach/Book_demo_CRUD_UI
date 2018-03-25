@@ -1,14 +1,16 @@
-<html>
-    <head>
-        <title>{{title}}</title>
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    </head>
-    <body>
+{% extends 'home.html'%}
+{% block title %}
+Create Book
+{% endblock %}
+
+{% block a %}
+Edit Book
+{% endblock %}
+
+{% block content %}
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-4 col-md-offset-4">
-                    <h1> <a href="/"><i class="glyphicon glyphicon-home"></i></a> Edit Book</h1>
                     <form action="/book/{{book.getId()}}" method="post">
                         <div class="form-group">
                             <label for="title">Title:</label><br>
@@ -35,11 +37,13 @@
                         </div>
                         <div>
                             <br>
-                            <input class="btn btn-success" type="submit" value="Save">
+                            <input id="send" class="btn btn-success " type="submit" value="Save">
                         </div>
                     </form>
                 </div>
             </div>
         </div>
-    </body>
-</html>
+
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script type="text/javascript" src="/javascripts/create.js"></script>
+{% endblock %}

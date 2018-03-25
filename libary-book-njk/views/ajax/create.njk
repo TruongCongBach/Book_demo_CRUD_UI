@@ -1,22 +1,31 @@
-<html>
-    <head>
-        <title>{{title}}</title>
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    </head>
+{% extends 'home.html'%}
+{% block title %}
+Create Book
+{% endblock %}
+
+{% block a %}
+Create Book
+{% endblock %}
+
+{% block content %}
     <body>
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-4 col-md-offset-4">
-                    <h1> <a href="/"><i class="glyphicon glyphicon-home"></i></a> Create Book</h1>
-                    <form action="/book" method="post">
+                    <form id="form-create" action="/book" method="post">
                         <div class="form-group">
                             <label for="title">Title</label><br>
                             <input class="form-control" id="title" type="text" name="title">
+                            <div class="text-danger " id="div-title" hidden>
+                                The title can not be left blank or less than 40 characters
+                            </div>
                         </div>
                         <div class="form-group">
                             <label for="author">Author</label><br>
                             <input class="form-control" id="author"  type="text" name="author">
+                            <div class="text-danger" id="div-author" hidden>
+                                The author can not be left blank or less than 40 characters
+                            </div>
                         </div>
                         <div class="form-group">
                             <label for="publisher">Publisher</label><br>
@@ -28,18 +37,21 @@
                                 {% endfor %}
                             </select>
                         </div>
-
                         <div class="form-group">
                             <label for="price">Price</label><br>
                             <input class="form-control" id="price" type="number" name="price">
                         </div>
                         <div class="form-group">
                             <br>
-                            <input type="submit" class="btn btn-success" value="Save">
+                            <button id="send" type="submit" class=" btn btn-primary">
+                                <i class="glyphicon glyphicon-send"></i>
+                                Save</button>
                         </div>
                     </form>
                 </div>
             </div>
         </div>
     </body>
-</html>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script type="text/javascript" src="/javascripts/create.js"></script>
+{% endblock %}

@@ -17,8 +17,7 @@ class BookRepository {
      * @return {Promise <void>}
      */
     add(book) {
-        // console.log(book, book.getPublisher());
-        return this.connection('books').insert({
+      return this.connection('books').insert({
             title       : book.getTitle(),
             author      : book.getAuthor(),
             publisher_id: book.getPublisher().getId(),

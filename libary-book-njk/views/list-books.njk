@@ -1,33 +1,33 @@
 <html>
-<head>
-    <title>{{title}}</title>
-    <a href="/">Home</a>
-    <button id="btn-add">Add</button>
-    <link rel='stylesheet' type='text/css'  href='stylesheets/list-books.css'>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-</head>
-<body>
-<br>
-    <form method="get" action="/search-basic">
-        <div>
-            <label for="keyword"></label>
-            <input id="keyword" type="text" name="keyword">
-        </div>
-        <br>
-        <div>
-            <input type="submit" value="Search">
-        </div>
-    </form>
-    <ol>
-        {% for book in books %}
-        <li>
-            <a href="/book/{{book.getId()}}">
-                Title:  {{book.getTitle()}}
-            </a>
+    <head>
+        <title>{{title}}</title>
+        <a href="/">Home</a>
+        <button id="btn-add">Add</button>
+        <link rel='stylesheet' type='text/css'  href='stylesheets/list-books.css'>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    </head>
+    <body>
+    <br>
+        <form method="get" action="/search-basic">
+            <div>
+                <label for="keyword"></label>
+                <input id="keyword" type="text" name="keyword">
+            </div>
             <br>
-            Publisher: {{book.getPublisher().getName()}}
-        </li>
-        {% endfor %}
-    </ol>
-</body>
+            <div>
+                <input type="submit" value="Search">
+            </div>
+        </form>
+        <ol>
+            {% for book in books %}
+            <li>
+                <a href="/book/{{book.getId()}}">
+                    Title:  {{book.getTitle()}}
+                </a>
+                <br>
+                Publisher: {{book.getPublisher().getName()}}
+            </li>
+            {% endfor %}
+        </ol>
+    </body>
 </html>
