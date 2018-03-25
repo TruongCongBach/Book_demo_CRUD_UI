@@ -11,7 +11,6 @@ class BookFactoryReq {
     makeFromRequest(bookRaw) {
         let book = new Book(bookRaw.title, bookRaw.author);
         book.setPrice(bookRaw.price);
-
         return supplierPublisher(bookRaw.publisher_id)
             .then(results => {
                 let publisher = new Publisher(results.name);
